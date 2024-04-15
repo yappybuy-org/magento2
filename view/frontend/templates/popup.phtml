@@ -1,0 +1,96 @@
+<div class="yb-popup-bg" style="display:none;">
+    <div  id="yappyBuy-popup" class="content popup-init" >
+        <a style="color:#fff;" href="javascript:void(0);">Checkout was activated, click here to return to your checkout window.</a>		
+    </div>
+</div>
+<script>
+require(
+    [
+        'jquery',
+        'mage/url',
+        'Magento_Catalog/product/view/validation',
+        'mage/storage',
+        'mage/translate',
+		'Magento_Customer/js/customer-data'
+    ],
+    function ($, urlBuilder, validation, storage, $t,customerData) {
+        'use strict';
+		
+		var timeout=1000;
+		var minicartTimeout=500;
+		var yappiPopupWin=null;
+		
+		function CheckStatus(){
+			$.ajax({
+                type: 'post',
+                showLoader: false,
+                url: urlBuilder.build('yb_checkout/checkout/StatusAction')
+            }).success(function (data) {
+				if(data.status=='order_placed'){
+					var sections = ['cart'];
+					customerData.invalidate(sections);
+					customerData.reload(sections, true);
+					location.href=urlBuilder.build('checkout/onepage/success');
+				}else{
+					setTimeout(CheckStatus, timeout);				
+				}
+            });
+		}
+		
+		
+		function activateYappiPopUp(){
+			$(".yb-popup-bg").show();
+			yappiPopupWin=window.open('',
+                    'yappy-1',
+                    'toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes,width='+(screen.availWidth * 0.6)+',height='+(screen.availHeight * 0.8)+',top='+(screen.availHeight * 0.1)+',left='+(screen.availWidth * 0.2)
+                );
+			
+			$.ajax({
+                type: 'post',
+                showLoader: false,
+                url: urlBuilder.build('yb_checkout/checkout/CheckoutAction'),
+                data: {'action':'startCheckout'}
+            }).success(function (data) {
+				
+				var ybUrl=data.url;				
+				yappiPopupWin.location.href=ybUrl;					
+				
+				$('#yappyBuy-popup a').on('click',function() {
+					yappiPopupWin.focus();
+				});
+				
+				CheckStatus();
+            });
+		}
+
+		$('#yappybuy-checkout-button-cart img,  button.yappyBuyButton-wrapper').on('click',function() {			
+			activateYappiPopUp();
+		});
+		
+		var isClosedTimer = setInterval(function() { 
+			if(yappiPopupWin!=null && yappiPopupWin.closed) {
+				clearInterval(isClosedTimer);
+				window.focus();
+				document.location.reload();
+				//alert('closed');
+			}
+		}, 1000);
+		
+		
+		function CheckMinicart(){
+			if($('#yappybuy-checkout-button-minicart img').length){
+				$('#yappybuy-checkout-button-minicart img').on('click',function() {			
+					activateYappiPopUp();
+				});
+			}else{
+				setTimeout(CheckMinicart, minicartTimeout);				
+			}
+
+		}
+	
+		CheckMinicart();
+
+
+    }
+); 
+</script>

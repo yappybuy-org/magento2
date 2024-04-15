@@ -1,0 +1,11 @@
+.config-nav-block.yappybuy-tab strong:before {
+    background: url(../images/logo.svg) no-repeat;
+    width: 20px;
+    height: 20px;
+    content: '';
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: bottom;
+	background-size: contain;
+}
+

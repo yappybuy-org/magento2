@@ -1,0 +1,12 @@
+<?php if ($block->isEnabled("cart_button")) : ?>
+    <div id="yappybuy-checkout-button-cart" class="yappybuy-request-button cart" >
+		<img  src="<?= $block->getViewFileUrl('YappyBuy_Checkout::images/one-click.svg');  ?>" />
+	</div>
+    <script>
+        require(['jquery', 'YappyBuy_Checkout/js/yappyBuy_checkout'], function(jQuery, ybCheckout) {
+/*             jQuery(document).ready(function() {
+                alert('cart button');
+            }); */
+        });
+    </script>
+<?php endif; ?>

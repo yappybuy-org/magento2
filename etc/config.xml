@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <yappybuy>
+                <payment_action>authorize</payment_action>
+                <model>YappyBuy\Checkout\Model\PaymentMethod</model>
+                <active>1</active>
+                <title>yappyBuy Checkout</title>
+                <order_status>pending_payment</order_status>
+            </yappybuy>
+        </payment>
+        <yappybuy_checkout>
+            <general>
+                <apiKey backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+			</general>
+            <design>
+                <background>#882898</background>
+				<foreground>#FFFFFF</foreground>
+				<width>256</width>
+				<radius>10</radius>
+				<hideMagento>1</hideMagento>
+				<cartButtonSelector>#top-cart-btn-checkout</cartButtonSelector>
+				<miniCartButtonSelector>.checkout-cart-index .action.primary.checkout</miniCartButtonSelector>
+			</design>			
+		</yappybuy_checkout>
+    </default>
+</config>

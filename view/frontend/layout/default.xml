@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+        <css src="YappyBuy_Checkout::css/yappyBuy_checkout.css"/>
+	</head>
+	<body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" template="YappyBuy_Checkout::init.phtml" name="yappyBuyPopUpInit"/> 
+        </referenceContainer>	
+		<!--referenceContainer name="before.body.end">
+			<block class="Magento\Framework\View\Element\Template" template="YappyBuy_Checkout::popup.phtml" name="yappyBuyPopUp"/>
+		</referenceContainer-->
+    </body>
+</page>

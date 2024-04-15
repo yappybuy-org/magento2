@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+	    <tab id="yappybuy" translate="label" sortOrder="999998" class="yappybuy-tab">
+            <label>YappyBuy Extensions</label>
+        </tab>
+        <section id="yappybuy_checkout" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label><![CDATA[YappyBuy Checkout]]></label>
+            <tab>yappybuy</tab>
+            <resource>YappyBuy_Checkout::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>General</label>
+				
+				<field id="warning" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="0">                    
+                    <frontend_model>YappyBuy\Checkout\Block\Adminhtml\Warning</frontend_model>
+					
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Enable YappyBuy checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<config_path>yappybuy_checkout/general/enable</config_path>
+                </field>
+				<!--field id="merchantLogin" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Merchant Login</label>
+					<depends>
+						<field id="enable">1</field>
+					</depends>
+					<config_path>yappybuy_checkout/general/merchantLogin</config_path>
+				</field-->                
+				<field id="apiKey" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>API Key</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id="enable">1</field>
+					</depends>
+					<config_path>yappybuy_checkout/general/apiKey</config_path>
+				</field>
+                <field id="masked" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Used masked ID</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<config_path>yappybuy_checkout/general/masked</config_path>
+                </field>				
+				<field id="environment" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Environment</label>
+					<source_model>YappyBuy\Checkout\Model\Config\Source\Environment</source_model>
+					<config_path>yappybuy_checkout/general/environment</config_path>
+				</field>
+
+				<!--field id="dev" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+          <label>Use test environment</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<config_path>yappybuy_checkout/general/test</config_path>
+        </field-->
+
+				<field id="apiUrl" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>API Url</label>					
+					<depends>
+						<field id="environment">3</field>
+					</depends>
+					<config_path>yappybuy_checkout/general/apiUrl</config_path>
+				</field>
+				<field id="webUrl" translate="label" type="text" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>WEB Url</label>					
+					<depends>
+						<field id="environment">3</field>
+					</depends>
+					<config_path>yappybuy_checkout/general/webUrl</config_path>
+				</field>
+
+
+				<field id="attributes" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Attributes</label>					
+					<config_path>yappybuy_checkout/general/attributes</config_path>
+					<comment>use attributes - one per line</comment>
+				</field>
+      </group>
+      <group id="design" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label>Design</label>
+				<field id="label" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Button Label</label>					
+					<config_path>yappybuy_checkout/design/label</config_path>
+				</field>   
+				<field id="showQuickButton" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show Quick Button</label>					
+					<config_path>yappybuy_checkout/design/showQuickButton</config_path>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>   					
+				<field id="quickLabel" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Quick Button Label</label>					
+					<config_path>yappybuy_checkout/design/quicklabel</config_path>
+				</field>   			
+                <field id="yIcon" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show `Y` icon</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<config_path>yappybuy_checkout/general/yIcon</config_path>
+                </field>				
+				<field id="background" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				  <label>Button Background Color</label>
+					<frontend_model>YappyBuy\Checkout\Block\Adminhtml\ColorPicker</frontend_model>           
+					<config_path>yappybuy_checkout/design/background</config_path>
+				</field>				
+				<field id="foreground" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Button Foreground Color</label>
+					<frontend_model>YappyBuy\Checkout\Block\Adminhtml\ColorPicker</frontend_model>           
+					<config_path>yappybuy_checkout/design/foreground</config_path>
+				</field>
+				<field id="width" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Button Width</label>					 
+					<config_path>yappybuy_checkout/design/width</config_path>
+					<comment>default width: 256</comment>
+				</field>
+				<field id="radius" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Border radius</label>					 
+					<config_path>yappybuy_checkout/design/radius</config_path>
+					<comment>default radius: 10</comment>
+				</field>
+        <field id="hideMagento" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+          <label>Hide Magento checkout buttons</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<config_path>yappybuy_checkout/design/hideMagento</config_path>
+        </field>		
+				<field id="addToCartButtonSelector" translate="label" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Add to Cart button selector</label>					 
+					<config_path>yappybuy_checkout/design/addToCartButtonSelector</config_path>
+					<comment>CSS Selector for Add to Cart button (on product page)</comment>
+				</field>								
+				<field id="cartButtonSelector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Checkout button selector</label>					 
+					<config_path>yappybuy_checkout/design/cartButtonSelector</config_path>
+					<comment>CSS Selector for fixed checkout button (on cart page)</comment>
+				</field>				
+				<field id="miniCartButtonSelector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Dynamic checkout button selector</label>					 
+					<config_path>yappybuy_checkout/design/miniCartButtonSelector</config_path>
+					<comment>CSS Selector for dynamic checkout button (in minicart block)</comment>
+				</field>				
+				<field id="mode" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Checkout Mode</label>
+					<source_model>YappyBuy\Checkout\Model\Config\Source\Mode</source_model>					 
+					<config_path>yappybuy_checkout/design/mode</config_path>
+				</field>				
+				
+      </group>
+
+
+			
+        </section>
+        <section id="payment">
+                <group id="yappybuy" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>yappyBuy Checkout</label>
+                    <field id="active" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Title</label>
+                    </field>
+                </group>
+        </section>
+    </system>
+</config>

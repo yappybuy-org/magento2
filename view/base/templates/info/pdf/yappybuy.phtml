@@ -1,0 +1,13 @@
+<?= $block->escapeHtml($block->getMethod()->getTitle()) ?>
+    {{pdf_row_separator}}
+<?php if ($block->getInfo()->getAdditionalInformation()) : ?>
+    {{pdf_row_separator}}
+    <?php if ($block->getUsedPaymentMethod()) : ?>
+        <?= $block->escapeHtml(__('Used Method: %1', $block->getUsedPaymentMethod())) ?>
+        {{pdf_row_separator}}
+    <?php endif; ?>
+    <?php if ($block->getPaymentId()) : ?>
+        <?= $block->escapeHtml(__('Payment Id: %1', $block->getPaymentId())) ?>
+        {{pdf_row_separator}}        
+    <?php endif; ?>
+<?php endif; ?>

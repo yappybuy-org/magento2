@@ -1,0 +1,14 @@
+<?php if ($block->isEnabled()) : ?>
+<div class="yappybuy-checkout-express-minicart">
+    <div id="yappybuy-checkout-button-minicart" class="yappybuy-request-button" >
+		<img  src="<?= $block->getViewFileUrl('YappyBuy_Checkout::images/one-click.svg');  ?>" />  
+	</div>
+    <script>
+        require(['jquery', 'YappyBuy_Checkout/js/yappyBuy_checkout'], function(jQuery, ybCheckout) {
+/*             jQuery(document).ready(function() {
+                alert('minicart button');
+            }); */
+        });
+    </script>
+</div>
+<?php endif; ?>

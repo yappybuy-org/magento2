@@ -1,0 +1,18 @@
+
+<dl class="payment-method yappybuy">
+    <dt class="title"><?= $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+    <?php if ($block->getInfo()->getAdditionalInformation()) : ?>
+        <?php if ($block->getUsedPaymentMethod()) : ?>
+            <dd class="content">
+                <strong><?= $block->escapeHtml(__('Used Method:')) ?> </strong>
+                <?= $block->escapeHtml($block->getUsedPaymentMethod()) ?>
+            </dd>
+        <?php endif; ?>
+        <?php if ($block->getPaymentId()) : ?>
+            <dd class="content">
+                <strong><?= $block->escapeHtml(__('Payment Id:')) ?> </strong>                
+                <?= /* @noEscape */ nl2br($block->escapeHtml($block->getPaymentId())) ?>                
+            </dd>
+        <?php endif; ?>
+    <?php endif; ?>
+</dl>
