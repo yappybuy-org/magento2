@@ -1,8 +1,9 @@
 {
     "name": "alexvvv-yb/yappybuycheckoutm2",
     "type": "magento2-module",
-    "description": "yappyBuy checkout for Magento 2.",
-    "version": "1.0.0",
+    "description": "yappyBuy checkout for Magento 2.",	        
+    "minimum-stability": "dev",
+    "version": "0.1.0",
 	"keywords": [
 		"yappybuy",
 		"checkout",
