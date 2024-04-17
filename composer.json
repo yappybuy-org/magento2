@@ -1,5 +1,5 @@
 {
-    "name": "alexvvv-yb/yappybuycheckoutm2",
+    "name": "yappybuy-org/magento2",
     "type": "magento2-module",
     "description": "yappyBuy checkout for Magento 2.",	        
     "minimum-stability": "dev",
