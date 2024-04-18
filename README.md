@@ -4,7 +4,7 @@
 
 ```
 composer config repositories.yBuy git https://github.com/yappybuy-org/magento2.git
-composer require yappybuy-org/magento2:master
+composer require yappybuy-org/magento2
 
 bin/magento setup:upgrade
 bin/magento setup:di:compile
